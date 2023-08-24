@@ -9,4 +9,6 @@ router.get('/home', controller.home);
 //Results Route - Get
 router.get('/results', controller.results);
 
+router.get('/test', controller.test);
+
 module.exports = router;

@@ -1,0 +1,27 @@
+<%- include('includes/head') %>
+
+</head>
+<body>
+  <%- include('includes/nav') %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>email</th>
+    </tr>
+    <% html.forEach(result=>{ %>
+    <tr>
+      <td><%= result.name %></td>
+      <td><%= result.name %></td>
+    </tr>
+    <%}); %>
+  </table>
+
+<ul>        
+<% html.forEach(result=>{ %>
+<li><%= result.email %></li>
+<%}); %>
+</ul>
+  <%- include('includes/footer') %>
+
+  
+

@@ -32,6 +32,39 @@
 
 
 
+  //TEST ROUTE////////////// - use this to try to connect to doors
+  exports.test = async function(req,res,next){
+    try{
+    const response = await fetch('https://kbr-sys-clm.ibmcloud.com/rm/rootservices',{
+      method:'GET',
+      headers:{
+          accept:"application/json",
+          mode:"no-cors"
+      }
+  })
+  const doors_data = await response.json();
+ 
+  
+  const doors_data_array = doors_data.map(requirements=>{
+      return requirements
+  })
+
+    //place data into ejs template 
+    doors_html=doors_data_array
+    console.log(doors_data_array)
+
+    //render ejs template with data
+    res.render('test_route',{doors_html})
+
+  }
+ catch(error){
+    console.error(error)
+    res.render('error')
+  }
+}
+
+
+
 
 
 
