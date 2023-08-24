@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('includes/head') %>
 
-    <title>Document</title>
 </head>
 <body>
-  <a href="/home"><button>Go home</button></a>
-  <a href="/results"><button>Get Results</button></a>
-   
-        <table>
-            <tr>
-              <th>Name</th>
-              <th>email</th>
-            </tr>
-            <% html.forEach(result=>{ %>
-            <tr>
-              <td><%= result.name %></td>
-              <td><%= result.name %></td>
-            </tr>
-            <%}); %>
-          </table>
+  <%- include('includes/nav') %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>email</th>
+    </tr>
+    <% html.forEach(result=>{ %>
+    <tr>
+      <td><%= result.name %></td>
+      <td><%= result.name %></td>
+    </tr>
+    <%}); %>
+  </table>
 
-    <ul>        
-   <% html.forEach(result=>{ %>
-   <li><%= result.email %></li>
-   <%}); %>
-    </ul>
+<ul>        
+<% html.forEach(result=>{ %>
+<li><%= result.email %></li>
+<%}); %>
+</ul>
+  <%- include('includes/footer') %>
+
   
 
-</body>
-<script src="javascripts/events.js"></script>
-</html>
