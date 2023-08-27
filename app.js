@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const cors =require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -15,12 +15,28 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+//passing urlencoded data front->back end - all routes
+app.use(express.urlencoded({ 
+  extended: false,
+  limit:10000,
+  parameterLimit:2,
+ }));
+
+
+ //passing urlencoded data front->back end - specific routes
+//  const middle = express.urlencoded({ 
+//   extended: false,
+//   limit:10000,
+//   parameterLimit:2,
+//  });
+
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended:true}))
 
-
-
+app.use(cors());
 app.use('/', indexRouter);
 app.use('/get_data',indexRouter);
 app.use('/users', usersRouter);
